@@ -6,6 +6,7 @@ It utilizes the JSONPlaceholder API and Bloc packages to demonstrate best practi
 ## Resources
 
 [JSONPlaceholder Website](https://jsonplaceholder.typicode.com/)
+https://quicktype.io/
 
 ## Dependencies
 
