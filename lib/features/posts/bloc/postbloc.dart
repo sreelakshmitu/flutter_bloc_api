@@ -16,12 +16,17 @@ class PostBloc extends Bloc<PostEvent,PostState>{
   FutureOr<void> postinitialfetchevent(PostInitialFetchEvent event, Emitter<PostState> emit) async{
     
      var client= http.Client();
+     List<PostDataModel> posts=[];
 
      try{
       var response =await client.get(
-        Uri.https('https://jsonplaceholder.typicode.com/'),
-
-      );
+        Uri.https('https://jsonplaceholder.typicode.com/'));
+        
+        for(int i =0; i<response.body.length;i++){
+          
+          PostDataModel post=PostDataModel.fromMap(response.body[i] as Map<String, dynamic>);
+          posts.add(post);
+        }
      }
     catch(e){
 
