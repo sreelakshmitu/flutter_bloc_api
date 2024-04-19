@@ -3,7 +3,7 @@
 This project showcases how to make API requests in Flutter using the Bloc pattern.
 It utilizes the JSONPlaceholder API and Bloc packages to demonstrate best practices for managing state and handling asynchronous operations in Flutter applications.
 
-## Getting Started
+## Resources
 
 [JSONPlaceholder Website](https://jsonplaceholder.typicode.com/)
 
