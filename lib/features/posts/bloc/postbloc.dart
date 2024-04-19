@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter_api/features/posts/models/post_data_model.dart';
 import 'package:http/http.dart' as http;
 
 part  'postevents.dart';
