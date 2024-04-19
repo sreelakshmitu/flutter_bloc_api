@@ -17,6 +17,7 @@ dependencies:
   flutter_bloc: ^8.1.5
   bloc: ^8.1.4
   http: ^1.2.1
+  json_serializable: ^6.7.1
 
 dev_dependencies:
   flutter_test:
