@@ -1,16 +1,17 @@
 # flutter_api
 
-A new Flutter project.
+This project showcases how to make API requests in Flutter using the Bloc pattern.
+It utilizes the JSONPlaceholder API and Bloc packages to demonstrate best practices for managing state and handling asynchronous operations in Flutter applications.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+[JSONPlaceholder Website](https://jsonplaceholder.typicode.com/)
 
-A few resources to get you started if this is your first Flutter project:
+## Dependencies
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- [bloc](https://pub.dev/packages/bloc)
+- [flutter_bloc](https://pub.dev/packages/flutter_bloc)
+- [http](https://pub.dev/packages/http)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
