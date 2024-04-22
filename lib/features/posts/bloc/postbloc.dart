@@ -20,8 +20,7 @@ class PostBloc extends Bloc<PostEvent,PostState>{
      List<PostDataModel> posts=[];
 
      try{
-      var response =await client.get(
-        Uri.https('https://jsonplaceholder.typicode.com/'));
+       var response = await http.get(Uri.https('jsonplaceholder.typicode.com', '/posts'));
 
         List result=jsonDecode(response.body);
         
