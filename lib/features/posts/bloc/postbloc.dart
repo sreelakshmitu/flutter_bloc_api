@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
@@ -21,12 +22,17 @@ class PostBloc extends Bloc<PostEvent,PostState>{
      try{
       var response =await client.get(
         Uri.https('https://jsonplaceholder.typicode.com/'));
+
+        List result=jsonDecode(response.body);
         
-        for(int i =0; i<response.body.length;i++){
+        for(int i =0; i<result.length;i++){
           
-          PostDataModel post=PostDataModel.fromMap(response.body[i] as Map<String, dynamic>);
+          PostDataModel post=PostDataModel.fromMap(result[i] as Map<String, dynamic>);
           posts.add(post);
         }
+      emit(PostFetchSuccessfulState(post: posts));
+
+     
      }
     catch(e){
 
