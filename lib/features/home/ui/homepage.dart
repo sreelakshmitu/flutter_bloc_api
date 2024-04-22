@@ -3,6 +3,7 @@ import 'package:flutter_api/features/home/bloc/homebloc.dart';
 import 'package:flutter_api/features/home/bloc/homeevent.dart';
 import 'package:flutter_api/features/home/bloc/homestate.dart';
 import 'package:flutter_api/features/posts/ui/postpage.dart';
+import 'package:flutter_api/features/write/ui/writepage.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -25,13 +26,13 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body:BlocConsumer<HomeBloc,HomeState>(
         bloc:homebloc,
-        listenWhen:(previous,current)=>current is HomeState,
-        buildWhen:(previous,current)=>current is! HomeState,
         listener:(context,state){
           if(state is HomeGetPostClickedState){
             Navigator.push(context, MaterialPageRoute(builder:(context)=> const PostPage()));
           }
-          else if(state is HomeWritePostClickedState){}
+          else if(state is HomeWritePostClickedState){
+            Navigator.push(context,MaterialPageRoute(builder: (context)=> const WritePage()));
+          }
           else if(state is HomeUpdatePostClickedState){}
           else if(state is HomeDeletePostClickedState){}
         },
