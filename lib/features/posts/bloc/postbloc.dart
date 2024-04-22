@@ -1,10 +1,9 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter_api/features/posts/models/post_data_model.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter_api/features/posts/repos/post_repo.dart';
+
 
 part  'postevents.dart';
 part  'poststate.dart';
@@ -15,28 +14,13 @@ class PostBloc extends Bloc<PostEvent,PostState>{
   }
 
   FutureOr<void> postinitialfetchevent(PostInitialFetchEvent event, Emitter<PostState> emit) async{
+
+    emit(PostInitialLoadingState());
+    List<PostDataModel> posts = await PostRepo.fetchposts();
+
+    emit(PostFetchSuccessfulState(post: posts));
     
-     var client= http.Client();
-     List<PostDataModel> posts=[];
-
-     try{
-       var response = await http.get(Uri.https('jsonplaceholder.typicode.com', '/posts'));
-
-        List result=jsonDecode(response.body);
-        
-        for(int i =0; i<result.length;i++){
-          
-          PostDataModel post=PostDataModel.fromMap(result[i] as Map<String, dynamic>);
-          posts.add(post);
-        }
-      emit(PostFetchSuccessfulState(post: posts));
-
-     
-     }
-    catch(e){
-
-      log(e.toString());
-    }
+     //
 
   }
 }
