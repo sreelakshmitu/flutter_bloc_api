@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_api/features/posts/ui/postpage.dart';
+import 'package:flutter_api/features/home/ui/homepage.dart';
+// import 'package:flutter_api/features/posts/ui/postpage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Bloc with API',
-      home: PostPage(),
+      home: MyHomePage(),
     );
   }
 }
