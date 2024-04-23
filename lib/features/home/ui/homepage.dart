@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_api/features/delete/ui/deletepage.dart';
 import 'package:flutter_api/features/home/bloc/homebloc.dart';
 import 'package:flutter_api/features/home/bloc/homeevent.dart';
 import 'package:flutter_api/features/home/bloc/homestate.dart';
@@ -37,7 +38,9 @@ class _MyHomePageState extends State<MyHomePage> {
           else if(state is HomeUpdatePostClickedState){
             Navigator.push(context,MaterialPageRoute(builder: (context)=>const UpdatePage()));
           }
-          else if(state is HomeDeletePostClickedState){}
+          else if(state is HomeDeletePostClickedState){
+            Navigator.push(context,MaterialPageRoute(builder: (context)=>const DeletePage()));
+          }
         },
         builder:(context,state){
           return Center(
