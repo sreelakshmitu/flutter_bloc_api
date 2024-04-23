@@ -18,6 +18,8 @@ class WriteBloc extends Bloc<WriteEvent,WriteState>{
      
      bool success=await PostRepo.writeposts(event.id, event.title, event.body, event.userid);
 
+     print(success);
+
      if(success){
        emit(AddDataSuccessState());
      }
