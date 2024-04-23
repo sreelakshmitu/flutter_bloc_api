@@ -3,6 +3,7 @@ import 'package:flutter_api/features/home/bloc/homebloc.dart';
 import 'package:flutter_api/features/home/bloc/homeevent.dart';
 import 'package:flutter_api/features/home/bloc/homestate.dart';
 import 'package:flutter_api/features/posts/ui/postpage.dart';
+import 'package:flutter_api/features/update/ui/updatepage.dart';
 import 'package:flutter_api/features/write/ui/writepage.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,7 +34,9 @@ class _MyHomePageState extends State<MyHomePage> {
           else if(state is HomeWritePostClickedState){
             Navigator.push(context,MaterialPageRoute(builder: (context)=> const WritePage()));
           }
-          else if(state is HomeUpdatePostClickedState){}
+          else if(state is HomeUpdatePostClickedState){
+            Navigator.push(context,MaterialPageRoute(builder: (context)=>const UpdatePage()));
+          }
           else if(state is HomeDeletePostClickedState){}
         },
         builder:(context,state){
