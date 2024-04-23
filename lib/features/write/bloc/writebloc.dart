@@ -15,7 +15,7 @@ class WriteBloc extends Bloc<WriteEvent,WriteState>{
   }
   FutureOr<void> adddataclickedeevent(AddDataClickedEvent event, Emitter<WriteState> emit) async{
      
-     bool success=await WriteRepo.writeposts(event.id, event.title, event.body, event.userid);
+     bool success=await WriteRepo.writeposts(event.title, event.body, event.userid);
 
      //print(success);
 

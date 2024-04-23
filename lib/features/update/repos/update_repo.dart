@@ -10,9 +10,8 @@ static Future<bool> updateposts(String id , String title , String body ,String u
 
     try{
 
-       var response = await client.put(Uri.parse('https://jsonplaceholder.typicode.com/posts/1'),
+       var response = await client.put(Uri.parse('https://jsonplaceholder.typicode.com/posts/$id'),
        body:{
-        "id":id,
         "userId":userid,
         "title":title,
         "body":body,
