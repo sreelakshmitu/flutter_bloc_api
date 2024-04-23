@@ -29,6 +29,9 @@ class _UpdatePageState extends State<UpdatePage> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blue,
+        centerTitle: true,
+        title: const Text('Update Post',style:TextStyle(color:Colors.white)),
         automaticallyImplyLeading: true,
       ),
       body:BlocConsumer<UpdateBloc,UpdateState>(
