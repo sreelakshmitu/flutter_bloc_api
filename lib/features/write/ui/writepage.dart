@@ -30,6 +30,9 @@ class _WritePageState extends State<WritePage> {
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.blue,
+        title: const Text('Write Post',style:TextStyle(color:Colors.white)),
         automaticallyImplyLeading: true,
       ),
       body:BlocConsumer<WriteBloc,WriteState>(
