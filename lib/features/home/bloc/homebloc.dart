@@ -17,6 +17,8 @@ class HomeBloc extends Bloc<HomeEvent,HomeState>{
 
     on<HomeDeletePostClickedEvent>(deletepostclickedevent);
 
+    on<HomePatchPostClickedEvent>(homepatchpostclickedevent);
+
 
   }
 
@@ -43,4 +45,8 @@ class HomeBloc extends Bloc<HomeEvent,HomeState>{
   }
 
 
+
+  FutureOr<void> homepatchpostclickedevent(HomePatchPostClickedEvent event, Emitter<HomeState> emit) {
+    emit(HomePatchPostClickedState());
+  }
 }
