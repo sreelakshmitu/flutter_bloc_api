@@ -3,6 +3,7 @@ import 'package:flutter_api/features/delete/ui/deletepage.dart';
 import 'package:flutter_api/features/home/bloc/homebloc.dart';
 import 'package:flutter_api/features/home/bloc/homeevent.dart';
 import 'package:flutter_api/features/home/bloc/homestate.dart';
+import 'package:flutter_api/features/patch/ui/patchpage.dart';
 import 'package:flutter_api/features/posts/ui/postpage.dart';
 import 'package:flutter_api/features/update/ui/updatepage.dart';
 import 'package:flutter_api/features/write/ui/writepage.dart';
@@ -41,6 +42,9 @@ class _MyHomePageState extends State<MyHomePage> {
           else if(state is HomeDeletePostClickedState){
             Navigator.push(context,MaterialPageRoute(builder: (context)=>const DeletePage()));
           }
+          else if(state is HomePatchPostClickedState){
+            Navigator.push(context,MaterialPageRoute(builder: (context)=>const PatchPage()));
+          }
         },
         builder:(context,state){
           return Center(
@@ -71,6 +75,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 backgroundColor: MaterialStateProperty.all<Color>(Colors.blue), 
               ),
                 onPressed: (){homebloc.add(HomeDeletePostClickedEvent());}, child: const Text('Delete post',style:TextStyle(color: Colors.white))),
+              const SizedBox(height:20),
+              ElevatedButton(
+                style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(Colors.blue), 
+              ),
+                onPressed: (){homebloc.add(HomePatchPostClickedEvent());}, child: const Text('Patch post',style:TextStyle(color: Colors.white))),
             ],
           ),
         );
