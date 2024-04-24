@@ -30,10 +30,8 @@ class PatchBloc extends Bloc<PatchEvent,PatchState>{
  
 
   FutureOr<void> dropdownitemselectedevent(DropdownItemSelectedEvent event, Emitter<PatchState> emit) {
-
-     chosenvalue=event.selectedvalue;
     
-     emit(PatchDataSelectedState());
+     emit(PatchDataSelectedState(selectedvalue: event.selectedvalue));
   }
 
   FutureOr<void> patchbuttonclickedevent(PatchButtonClickedEvent event, Emitter<PatchState> emit) async{
