@@ -11,3 +11,5 @@ class HomeWritePostClickedState extends HomeActionState{}
 class HomeUpdatePostClickedState extends HomeActionState{}
 
 class HomeDeletePostClickedState extends HomeActionState{}
+
+class HomePatchPostClickedState extends HomeActionState{}
