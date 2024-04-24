@@ -37,6 +37,7 @@ class _WritePageState extends State<WritePage> {
         bloc:writebloc,
         listener:(context,state){},
         builder: (context,state) { 
+
             return Center(
             child: Container(
             margin:const EdgeInsets.only(top:10),
