@@ -9,3 +9,5 @@ class HomeWritePostClickedEvent extends HomeEvent{}
 class HomeUpdatePostClickedEvent extends HomeEvent{}
 
 class HomeDeletePostClickedEvent extends HomeEvent{}
+
+class HomePatchPostClickedEvent extends HomeEvent{}
