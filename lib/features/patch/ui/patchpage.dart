@@ -30,7 +30,10 @@ class _PatchPageState extends State<PatchPage> {
       bloc:patchbloc ,
       listener:(context,state){},
       builder: (context, state) {
-        if (state is PatchDataSelectedState) {
+        
+        switch(state.runtimeType) {
+          case PatchDataSelectedState:
+          final patchstate=state as PatchDataSelectedState;
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.blue,
@@ -50,7 +53,7 @@ class _PatchPageState extends State<PatchPage> {
                     }).toList(),
                     onChanged: (String? newValue) {
                       patchbloc.add(
-                            DropdownItemSelectedEvent(selectedvalue: newValue!),
+                            DropdownItemSelectedEvent(selectedvalue: newValue!)
                           );
                     },
                     hint: const Text('Select a field to patch'),
@@ -64,7 +67,7 @@ class _PatchPageState extends State<PatchPage> {
                     hintText: 'Enter new value',
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height:20),
                 TextField(
                   controller: idController,
                   decoration: const InputDecoration(
@@ -74,10 +77,9 @@ class _PatchPageState extends State<PatchPage> {
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
-                    final selectedValue = context.read<PatchBloc>().chosenvalue ?? '';
                     patchbloc.add(
                           PatchButtonClickedEvent(
-                            chosenvalue: selectedValue,
+                            chosenvalue: patchstate.selectedvalue,
                             value: fieldController.text,
                             id: idController.text,
                           ),
@@ -88,10 +90,10 @@ class _PatchPageState extends State<PatchPage> {
               ],
             ),
           );
-        } else {
+          default:
           return const SizedBox();
+        } 
         }
-      },
     );
+      }
   }
-}
