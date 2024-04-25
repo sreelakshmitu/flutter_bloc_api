@@ -12,77 +12,83 @@ class PatchPage extends StatelessWidget {
     final TextEditingController fieldController = TextEditingController();
     final TextEditingController idController = TextEditingController();
 
-    return BlocProvider(
-      create: (context) => PatchBloc(),
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.blue,
-          centerTitle: true,
-          title: const Text('Patch Posts'),
-        ),
-        body: BlocBuilder<PatchBloc, PatchState>(
-          builder: (context, state) {
-              return _buildPatchForm(context, fieldController, idController);
-            } 
-        ),
-      ),
-    );
+  @override
+  void initState() {
+    super.initState();
+    patchbloc.add(PatchInitialEvent());
   }
+  final PatchBloc patchbloc=PatchBloc();
 
-  Widget _buildPatchForm(BuildContext context, TextEditingController fieldController, TextEditingController idController) {
-    final List<String> list = ['customerid', 'title', 'body'];
-    final PatchBloc patchbloc = context.read<PatchBloc>();
+  @override
+  Widget build(BuildContext context) {
+    const List<String> list = ['customerid', 'title', 'body'];
 
-    return Column(
-      children: [
-        Container(
-          margin: const EdgeInsets.all(20),
-          child: DropdownButton<String>(
-            items: list.map((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
-            onChanged: (String? newValue) {
-              patchbloc.add(DropdownItemSelectedEvent(selectedvalue: newValue!));
-            },
-            hint: const Text('Select a field to patch'),
-            value: null,
-          ),
-        ),
-        const SizedBox(height: 20),
-        TextField(
-          controller: fieldController,
-          decoration: const InputDecoration(
-            hintText: 'Enter new value',
-          ),
-        ),
-        const SizedBox(height: 20),
-        TextField(
-          controller: idController,
-          decoration: const InputDecoration(
-            hintText: 'Enter id value',
-          ),
-        ),
-        const SizedBox(height: 20),
-        ElevatedButton(
-          style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-              ),
-          onPressed: () {
-            final selectedValue = context.read<PatchBloc>().chosenvalue ?? '';
-            patchbloc.add(
-              PatchButtonClickedEvent(
-                chosenvalue: selectedValue,
-                value: fieldController.text,
-                id: idController.text,
-              ),
-            );
-          },
-          child: const Text('Patch Data', style: TextStyle(color: Colors.white)),
-        ),
-      ],
+    return BlocConsumer<PatchBloc, PatchState>(
+      bloc:patchbloc ,
+      listener:(context,state){},
+      builder: (context, state) {
+        if (state is PatchDataSelectedState) {
+          return Scaffold(
+            appBar: AppBar(
+              backgroundColor: Colors.blue,
+              centerTitle: true,
+              title: const Text('Patch Posts'),
+            ),
+            body: Column(
+              children: [
+                Container(
+                  margin: const EdgeInsets.all(20),
+                  child: DropdownButton<String>(
+                    items: list.map((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                    onChanged: (String? newValue) {
+                      patchbloc.add(
+                            DropdownItemSelectedEvent(selectedvalue: newValue!),
+                          );
+                    },
+                    hint: const Text('Select a field to patch'),
+                    value: null,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                TextField(
+                  controller: fieldController,
+                  decoration: const InputDecoration(
+                    hintText: 'Enter new value',
+                  ),
+                ),
+                const SizedBox(height: 20),
+                TextField(
+                  controller: idController,
+                  decoration: const InputDecoration(
+                    hintText: 'Enter id value',
+                  ),
+                ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    final selectedValue = context.read<PatchBloc>().chosenvalue ?? '';
+                    patchbloc.add(
+                          PatchButtonClickedEvent(
+                            chosenvalue: selectedValue,
+                            value: fieldController.text,
+                            id: idController.text,
+                          ),
+                        );
+                  },
+                  child: const Text('Patch Data', style: TextStyle(color: Colors.white)),
+                ),
+              ],
+            ),
+          );
+        } else {
+          return const SizedBox();
+        }
+      },
     );
+      }
   }
-}
