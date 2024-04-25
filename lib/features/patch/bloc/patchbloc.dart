@@ -38,7 +38,7 @@ class PatchBloc extends Bloc<PatchEvent,PatchState>{
 
     final success=await PatchRepo.patchposts(event.chosenvalue, event.value, event.id);
 
-    // print(success);
+    print(success);
 
     if(success){
       emit(PatchDataAddedSuccesfulState());}

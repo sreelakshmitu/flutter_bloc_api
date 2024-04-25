@@ -18,7 +18,7 @@ class UpdateBloc extends Bloc<UpdateEvent,UpdateState>{
   FutureOr<void> updatebuttonclickedevent(UpdateButtonClickedEvent event, Emitter<UpdateState> emit) async{
     bool success= await UpdateRepo.updateposts(event.id,event.title,event.body,event.userid);
 
-    //print(success);
+    print(success);
 
     if(success){
       emit(UpdateDataSuccessfulState());}
