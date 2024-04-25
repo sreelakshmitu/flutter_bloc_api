@@ -6,12 +6,12 @@ abstract class PostActionState extends PostState{}
 
 class PostInitialState extends PostState{}
 
-class PostInitialFetchState extends PostState{
+// class PostInitialFetchState extends PostState{
   
-  final List<PostDataModel> dartresponse;
+//   final List<PostDataModel> dartresponse;
 
-  PostInitialFetchState({required this.dartresponse});
-}
+//   PostInitialFetchState({required this.dartresponse});
+// }
 
 class PostInitialLoadingState extends PostState{}
 
