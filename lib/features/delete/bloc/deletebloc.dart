@@ -23,7 +23,7 @@ class DeleteBloc extends Bloc<DeleteEvent,DeleteState>{
 
     bool success=await DeleteRepo.deleteposts(event.id);
 
-    print(success);
+    // print(success);
 
     if(success){
 
